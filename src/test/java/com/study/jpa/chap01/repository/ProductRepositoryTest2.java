@@ -3,8 +3,12 @@ package com.study.jpa.chap01.repository;
 import com.study.jpa.chap01.Entity.Product;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static com.study.jpa.chap01.Entity.Product.Category.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,4 +47,21 @@ class ProductRepositoryTest2 {
         productRepository.save(p3);
         productRepository.save(p4);
     }
+
+    @Test
+    @DisplayName("저장")
+    void saveTest() {
+        // given
+        Product p = Product.builder()
+                .name("떡뽁이")
+                .price(90000)
+                .category(Product.Category.FASHION)
+                .build();
+        // when
+        // insert한 객체를 가져올수있음.
+        Product saved = productRepository.save(p);
+        // then
+        assertNotNull(saved);
+    }
+
 }

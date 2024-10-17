@@ -12,9 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
+
 
 
 # log level setting

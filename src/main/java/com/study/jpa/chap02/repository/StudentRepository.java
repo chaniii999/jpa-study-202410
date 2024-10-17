@@ -1,10 +1,9 @@
-package com.study.jpa.chap01.chap02.repository;
+package com.study.jpa.chap02.repository;
 
 
-import com.study.jpa.chap01.chap02.entity.Student;
+import com.study.jpa.chap02.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +30,12 @@ public interface StudentRepository extends JpaRepository<Student, String> {
     // WHERE 별칭.필드명 = ?
     List<Student> findByNameOrCity(String name, String city);
 
-    @Query("select st from Student st where st.name like %?1% ")
+    @Query("select st from Employee st where st.name like %?1% ")
     List<Student> serachByNameWithJPQL(String name);
 
-    @Query("select st from Student st where st.city = ?1 ")
+    @Query("select st from Employee st where st.city = ?1 ")
     Optional<Student> getByCityWithJPQL(String city);
 
-    @Query("delete from Student s where s.name = ?1 and s.city = ?2 ")
+    @Query("delete from Employee s where s.name = ?1 and s.city = ?2 ")
     void deleteByNameAndCityWithJPQL(String name,String city);
 }

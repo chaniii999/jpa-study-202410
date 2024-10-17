@@ -1,4 +1,4 @@
-package com.study.jpa.chap02.entity;
+package com.study.jpa.chap04.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,23 +7,23 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Builder
 
 @Entity
-@Table(name = "tbl_student")
-public class Student {
+@Table(name = "tbl_emp")
+public class Employee {
 
     @Id
-    @Column(name = "stu_id")
+    @Column(name = "emp_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "stu_name", nullable = false)
+    @Column(name = "emp_name", nullable = false)
     private String name;
 
-    private String city;
-
-    private String major;
+    @ManyToOne // 포린키를 가진 사람 위주로 작성해야함.
+    @JoinColumn(name = "dept_id") // fk 컬럼명
+    private Department department;
 
 }

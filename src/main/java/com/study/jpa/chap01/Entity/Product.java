@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity @Setter
 @Table(name = "tbl_product")
 public class Product {
 
@@ -21,7 +21,7 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(name = "prod_nm, length = 30, nullable = false")
+    @Column(name = "prod_nm", length = 30, nullable = false)
     private String name;
 
     @Column(name = "prod_price")
@@ -46,5 +46,7 @@ public class Product {
         FASHION,
         ELECTRONIC
     }
+
+
 
 }
